@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
+import { Product } from "./product.entity";
 import { v4 as uuid } from "uuid";
 
 @Entity()
@@ -20,4 +21,6 @@ export class User {
 
   @Column()
   confirmPassword: string;
+
+  @OneToMany((type) => Product, (product) => product.user) products: Product[];
 }

@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToOne } from "typeorm";
+import { User } from "./user.entity";
 import { v4 as uuid } from "uuid";
 
 @Entity()
@@ -17,4 +18,6 @@ export class Product {
 
   @Column()
   condition: string;
+
+  @ManyToOne((type) => User, (user) => user.products) user: User;
 }
