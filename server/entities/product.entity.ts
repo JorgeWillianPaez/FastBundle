@@ -1,10 +1,11 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToOne } from "typeorm";
+import { User } from "./user.entity";
 import { v4 as uuid } from "uuid";
 
 @Entity()
 export class Product {
   @PrimaryColumn("uuid", { default: uuid() })
-  uuid: string;
+  uuid!: string;
 
   @Column()
   name: string;
@@ -17,4 +18,6 @@ export class Product {
 
   @Column()
   condition: string;
+
+  @ManyToOne((type) => User, (user) => user.products) user: User;
 }
