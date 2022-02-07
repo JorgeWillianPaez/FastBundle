@@ -10,6 +10,11 @@ export const FormContainer = styled.div`
   height: 100vh;
   background-color: var(--beige);
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
   h1 {
     margin-bottom: 30px;
     color: var(--brown);

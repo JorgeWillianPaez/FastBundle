@@ -1,8 +1,11 @@
 import { InputContainer } from "./styles";
 
-const Input = ({ placeholder, type, ...rest }) => {
+const Input = ({ placeholder, type, name, register, error, ...rest }) => {
   return (
-    <InputContainer placeholder={placeholder} type={type} {...rest} />
+    <InputContainer>
+      <input placeholder={placeholder} {...register(name)} type={type} {...rest} />
+      <div className="inputErrors">{!!error && <span>{error}!</span>}</div>
+    </InputContainer>
   )
 };
 
