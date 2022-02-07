@@ -19,8 +19,5 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  confirmPassword: string;
-
   @OneToMany((type) => Product, (product) => product.user) products: Product[];
 }

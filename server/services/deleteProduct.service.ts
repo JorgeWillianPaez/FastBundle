@@ -7,7 +7,7 @@ class DeleteProductService {
 
     await productsRepository.delete(uuid);
 
-    return "User deleted!";
+    return "Usuário deletado!";
   }
 }
 

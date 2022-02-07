@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { isLoggedIn } from "../middlewares/user.middleware";
 
 import CreateProductController from "../controllers/createProducts.controller";
 import DeleteProductController from "../controllers/deleteProduct.controller";
@@ -14,9 +15,9 @@ const updateProductController = new UpdateProductController();
 const createUserController = new CreateUserController();
 const loginUserController = new LoginUserController();
 
-router.post("/products", createProductController.handle);
-router.delete("/products/:uuid", deleteProductController.handle);
-router.patch("/products/:uuid", updateProductController.handle);
+router.post("/products", isLoggedIn, createProductController.handle);
+router.delete("/products/:uuid", isLoggedIn, deleteProductController.handle);
+router.patch("/products/:uuid", isLoggedIn, updateProductController.handle);
 router.post("/users", createUserController.handle);
 router.post("/users/login", loginUserController.handle);
 

@@ -8,7 +8,7 @@ class LoginUserController {
 
       const loginUserService = new LoginUserService();
 
-      const token = loginUserService.execute(username, password);
+      const token = await loginUserService.execute(username, password);
 
       return res.status(200).json({ message: token });
     } catch (err) {
