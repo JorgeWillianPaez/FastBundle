@@ -10,9 +10,9 @@ class LoginUserService {
     const user = await usersRepository.findOne({ username });
 
     if (!user) {
-      return "User doesn't exist!";
+      throw "Usuário não existe!";
     } else if (user.password != password) {
-      return "Password doesn't match!";
+      throw "Senha incorreta!";
     }
 
     const token = jwt.sign({ username: username }, config.secret, {
