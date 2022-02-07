@@ -4,11 +4,11 @@ import { User } from "../entities/user.entity";
 
 const config: ConnectionOptions = {
   type: "postgres",
-  host: "localhost",
+  host: "",
   port: 5432,
-  username: "jorgewillian",
-  password: "1234",
-  database: "fast_bundle",
+  username: "",
+  password: "",
+  database: "",
   entities: [Product, User],
   synchronize: true,
   logging: true,
