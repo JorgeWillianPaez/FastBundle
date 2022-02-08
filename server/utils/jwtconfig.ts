@@ -1,6 +1,6 @@
 const config = {
   secret: "secret_key",
-  expiresIn: "1h",
+  expiresIn: "1s",
 };
 
 export default config;

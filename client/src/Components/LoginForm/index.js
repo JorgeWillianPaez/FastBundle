@@ -6,10 +6,13 @@ import { useUser } from "../../Providers/UserProvider";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
   const { handleLogin } = useUser();
+
+  const navigate = useNavigate();
 
   const schema = yup.object().shape({
     username: yup.string().required("Nome de usuário obrigatório"),
@@ -24,8 +27,9 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitData = (data) => {
-    handleLogin(data);
+  const onSubmitData = async (data) => {
+    await handleLogin(data);
+    return navigate("/dashboard");
   };
 
   return (

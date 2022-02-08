@@ -31,6 +31,12 @@ export const NavBar = styled.div`
   width: 50%;
   color: var(--brown);
 
+  button {
+    border: none;
+    background-color: transparent;
+    color: var(--brown);
+  }
+
 `;
 
 export const Icons = styled.div`

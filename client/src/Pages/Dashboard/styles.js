@@ -8,6 +8,12 @@ export const DashboardContainer = styled.div`
 
 `;
 
+export const DashboardContent = styled.div`
+
+  display: flex;
+
+`;
+
 export const AsideNav = styled.div`
 
   input {
@@ -20,10 +26,30 @@ export const AsideNav = styled.div`
     color: var(--brown);
     border: none;
     border-radius: 14px;
+    margin: 30px 0 20px 40px;
   }
 
 `;
 
 export const MainContent = styled.div``;
 
-export const Categories = styled.div``;
+export const Categories = styled.div`
+
+  display: flex;
+  justify-content: center;
+  color: var(--brown);
+  width: 204px;
+  height: 400px;
+  background-color: var(--darkYellow);
+  border-radius: 14px;
+  margin: 20px 0 0 40px;
+
+  h3 {
+    margin-top: 8px;
+  }
+
+`;
+
+export const Products = styled.div``;
+
+export const Product = styled.div``;

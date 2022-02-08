@@ -1,16 +1,15 @@
-import axios from "axios";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import api from "../../Services/api";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-
   const navigate = useNavigate();
 
   const signUp = (userData) => {
-    axios.post("http://localhost:3000/users", userData)
+    api.post("/users", userData)
       .then((res) => {
         toast.success("Usuário cadastrado!");
         return navigate("/");
@@ -20,19 +19,25 @@ export const UserProvider = ({ children }) => {
       })
   }
 
-  const handleLogin = (userData) => {
-    axios.post("http://localhost:3000/users/login", userData)
+  const handleLogin = async (userData) => {
+    api.post("/users/login", userData)
       .then((res) => {
-        toast.success("Usuário logado com sucesso!");
-        return navigate("/dashboard");
+        localStorage.setItem("@FastBundle:token", res.data.message);
       })
+      .then((_) => toast.success("Usuário logado com sucesso!"))
       .catch((err) => {
         return toast.error(err.response.data.message);
       });
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("@FastBundle:token");
+    toast.success("Sessão encerrada!");
+    return navigate("/");
+  }
+
   return (
-    <UserContext.Provider value={{ handleLogin, signUp }}>
+    <UserContext.Provider value={{ handleLogin, signUp, handleLogout }}>
       {children}
     </UserContext.Provider>
   );
