@@ -28,6 +28,8 @@ yarn start
 
 Após isso, pressione a tecla "Y" para aceitar que a aplicação seja rodada na porta 3001 (já que o "server-side" está usando a 3000 como padrão).
 
+### Lembrando! Como a aplicação está sendo rodada localmente, é necessário fazer a conexão manual com o banco de dados, para isso você precisará criar um banco de dados no POSTGRESQL e preencher o arquivo ".env" de acordo com seu banco.
+
 #### Após ter feito isso, já é possível fazer as requisições e testar a aplicação!
 
 ## Endpoints:
